@@ -131,6 +131,11 @@ namespace Shield
         /// <param name="e">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
+            if (e.PrelaunchActivated)
+            {
+                return;
+            }
+
 #if DEBUG
             if (Debugger.IsAttached)
             {
@@ -138,7 +143,6 @@ namespace Shield
             }
 
 #endif
-
             var rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
